@@ -1,0 +1,39 @@
+---
+interface Props {
+  /** Percorso per arrivare alla risorsa */
+  path: {
+    /** Il nome della pagina mostrato all'utente */
+    text: string;
+
+    /** Link alla pagina. E' opzionale perché non va incluso per l'ultima pagina del `path` */
+    href?: string;
+  }[];
+}
+
+const { path } = Astro.props;
+---
+
+<ul>
+  {
+    path.map((data) => (
+      <li>{data.href ? <a href={data.href}>{data.text}</a> : data.text}</li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  ul {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+
+    li {
+      font-size: 0.8rem;
+
+      &:not(:last-child)::after {
+        content: "›";
+        margin-left: 0.5rem;
+      }
+    }
+  }
+</style>

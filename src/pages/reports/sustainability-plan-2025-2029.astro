@@ -1,0 +1,51 @@
+---
+import Breadcrumb from "@components/Breadcrumb.astro";
+import Report from "@components/Report.astro";
+import Layout from "@layouts/Layout.astro";
+
+import sp2529 from "@assets/covers/sustainability-plan-2025-2029.webp";
+
+const title = "Sustainability Plan 2025-2029";
+---
+
+<Layout title={title} description="Consulta il Sustainability Plan 2025-2029">
+  <main>
+    <Breadcrumb
+      path={[
+        { text: "Pagina iniziale", href: "/" },
+        { text: "Archivio", href: "/archive/" },
+        { text: title },
+      ]}
+    />
+
+    <h1>{title}</h1>
+    <Report
+      coverUrl={sp2529}
+      pdfUrl="/reports/sustainability-plan-2025-2029.pdf"
+      pdfSize={1.34}
+      pdfPages={19}
+      pdfLanguage="en"
+    >
+      <p>
+        Il nuovo Piano di Sostenibilità 2025–2029 di Leonardo si inserisce in un
+        contesto geopolitico complesso e mira a rafforzare la competitività
+        sostenibile del Gruppo. È costruito su cinque pilastri strategici:
+        rafforzare il core business, promuovere soluzioni digitali, attrarre
+        talenti, ottimizzare le operazioni e affrontare la sfida della sicurezza
+        globale. Il piano integra oltre 90 progetti lungo l'intera catena del
+        valore, con focus su decarbonizzazione, economia circolare, innovazione
+        tecnologica, supply chain sostenibile e impatto sociale.
+      </p>
+
+      <p>
+        Gli obiettivi chiave includono: -53% di emissioni Scope 1 e 2 e -52% di
+        emissioni per ora di volo entro il 2030, 58% di fornitori con obiettivi
+        climatici validati (SBTi), e una partecipazione femminile del 32% nelle
+        nuove assunzioni (20% nei ruoli manageriali). È previsto un aumento del
+        40% della capacità di calcolo pro capite e una riduzione del 25% dei
+        prelievi idrici. La governance è supportata da un sistema digitale
+        integrato per il monitoraggio di oltre 200 KPI.
+      </p>
+    </Report>
+  </main>
+</Layout>

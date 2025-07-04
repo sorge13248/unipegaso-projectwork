@@ -1,0 +1,55 @@
+---
+import Breadcrumb from "@components/Breadcrumb.astro";
+import Report from "@components/Report.astro";
+import Layout from "@layouts/Layout.astro";
+
+import ars24 from "@assets/covers/annual-report-summary-2024.webp";
+
+const title = "Annual Report Summary 2024";
+---
+
+<Layout
+  title={title}
+  description="Consulta l'Annual Report Summary 2024"
+>
+  <main>
+    <Breadcrumb
+      path={[
+        { text: "Pagina iniziale", href: "/" },
+        { text: "Archivio", href: "/archive/" },
+        { text: title },
+      ]}
+    />
+
+    <h1>{title}</h1>
+    <Report
+      coverUrl={ars24}
+      pdfUrl="/reports/annual-report-summary-2024.pdf"
+      pdfSize={7.74}
+      pdfPages={56}
+      pdfLanguage="en"
+    >
+      <p>
+        Nel 2024 Leonardo ha consolidato la propria crescita attraverso una
+        riorganizzazione strategica che ha focalizzato l’azienda sui core
+        business: Elettronica, Aeromobili, Elicotteri, Spazio e Cybersecurity.
+        Il nuovo Piano Industriale 2024–2028 punta su digitalizzazione,
+        innovazione, efficienza operativa e alleanze internazionali, prevedendo
+        una significativa crescita organica e inorganica, anche tramite joint
+        venture. L’anno si è chiuso con un aumento degli ordini (+12%), dei
+        ricavi (+11%), e dell’EBITA (+13%) rispetto al 2023. Il portafoglio
+        ordini ha superato i 44 miliardi di euro, rafforzando la visibilità
+        futura.
+      </p>
+
+      <p>
+        Leonardo ha anche intensificato il proprio impegno in sostenibilità,
+        ottenendo una riduzione delle emissioni di CO2 Scope 1 e 2 del 4,4%
+        nonostante l’espansione del business. Sono aumentati gli investimenti in
+        R&S (+13%), ed è proseguito il percorso di digitalizzazione con l’uso di
+        AI, digital twin e cloud computing. È cresciuta l’occupazione femminile,
+        specie nelle aree STEM.
+      </p>
+    </Report>
+  </main>
+</Layout>

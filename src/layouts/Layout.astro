@@ -1,0 +1,32 @@
+---
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+
+interface Props {
+  /** Titolo inserito nel `<title>` dell'`<head>` */
+  title: string;
+
+  /** Descrizione usata per il `<meta name="description" />` */
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+import "../global.scss";
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="description" content={description} />
+    <title>{title} - Leonardo Sustainability</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>

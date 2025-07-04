@@ -1,0 +1,49 @@
+---
+import Breadcrumb from "@components/Breadcrumb.astro";
+import Report from "@components/Report.astro";
+import Layout from "@layouts/Layout.astro";
+
+import sin24 from "@assets/covers/sustainability-in-action-2024.webp";
+
+const title = "Sustainability in Action 2024";
+---
+
+<Layout title={title} description="Consulta il Sustainability in Action 2024">
+  <main>
+    <Breadcrumb
+      path={[
+        { text: "Pagina iniziale", href: "/" },
+        { text: "Archivio", href: "/archive/" },
+        { text: title },
+      ]}
+    />
+
+    <h1>{title}</h1>
+    <Report
+      coverUrl={sin24}
+      pdfUrl="/reports/sustainability-in-action-2024.pdf"
+      pdfSize={9.85}
+      pdfPages={47}
+      pdfLanguage="it"
+    >
+      <p>
+        Il report descrive l’impegno strategico di Leonardo per integrare la
+        sostenibilità lungo tutta la catena del valore, allineandosi agli
+        obiettivi dell’Agenda 2030 ONU. La sostenibilità è organizzata in
+        quattro pilastri: Governance, People, Planet e Prosperity. Il nuovo
+        Piano di Sostenibilità 2024–2028 comprende 100 progetti, focalizzati su
+        digitalizzazione, decarbonizzazione, economia circolare, inclusione e
+        innovazione.
+      </p>
+
+      <p>
+        Leonardo ha ridotto del 41% le emissioni Scope 1 e 2 rispetto al 2020 e
+        punta a un -53% entro il 2030. Sono stati coinvolti oltre 500 fornitori
+        in percorsi di decarbonizzazione (Scope 3), mentre le soluzioni ad alto
+        contenuto tecnologico, come simulatori e digital twin, riducono
+        l’impatto ambientale. Il supercomputer davinci-1 e i Leonardo Labs
+        supportano la ricerca e l’ottimizzazione dei processi.
+      </p>
+    </Report>
+  </main>
+</Layout>
