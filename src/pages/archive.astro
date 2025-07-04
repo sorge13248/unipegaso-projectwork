@@ -1,6 +1,16 @@
 ---
 import Layout from "@layouts/Layout.astro";
 
+/**
+ * Importazione delle immagini per le copertine dei report, in modo da
+ * avere le immagini disponibili come oggetti e garantendo quindi integrità qualora
+ * le immagini non siano disponibili nel file system. In tal caso, verrà generato
+ * un errore di compilazione, evitando che il sito venga pubblicato con immagini mancanti
+ * o non valide.
+ * Questo approccio consente di gestire le immagini in modo più robusto e sicuro
+ * all'interno del progetto Astro, garantendo che tutte le risorse siano correttamente
+ * referenziate e disponibili al momento della compilazione.
+ */
 import ars24 from "@assets/covers/annual-report-summary-2024.webp";
 import sin24 from "@assets/covers/sustainability-in-action-2024.webp";
 import sp2529 from "@assets/covers/sustainability-plan-2025-2029.webp";
@@ -8,6 +18,13 @@ import Breadcrumb from "@components/Breadcrumb.astro";
 
 const title = "Archivio";
 
+/**
+ * Definizione dei report disponibili nell'archivio.
+ * Ogni report ha un titolo, una descrizione, un'immagine di copertura e un URL
+ * per accedere alla pagina di dettaglio del report.
+ * Questo array di oggetti viene utilizzato per generare dinamicamente la lista
+ * dei report nella pagina di archivio.
+ */
 const reports: {
   title: string;
   description: string;
@@ -62,6 +79,7 @@ const reports: {
     </section>
     <section>
       <ul class="rapporti">
+        <!-- Generazione dinamica degli elementi della lista che contengono i report -->
         {
           reports.map((report) => (
             <li>
@@ -80,6 +98,9 @@ const reports: {
 
 <style lang="scss">
   :root {
+    /** Siccome il border-radius dev'essere lo stesso in più elementi,
+    è stata definita una variabile CSS3, evitando quindi l'utilizzo dei
+    famigerati "magic numbers" all'interno del codice */
     --border-radius: 0.5rem;
   }
 
@@ -105,6 +126,8 @@ const reports: {
     width: 260px;
     transition: 0.2s ease-in-out;
 
+    /** Questo approccio consente di applicare stili specifici per la modalità scura
+    senza dover duplicare il codice per ogni elemento. */
     @media (prefers-color-scheme: dark) {
       color: white;
       background-color: #333;
@@ -112,6 +135,9 @@ const reports: {
     }
   }
 
+  /** Quando l'utente pone il cursore sopra un report, oppure ci arriva
+  usando il tasto TAB della tastiera, il report viene evidenziato ed
+  ingrandito */
   .rapporti li a:hover,
   .rapporti li a:focus-visible {
     background-color: #810013;

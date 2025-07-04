@@ -1,4 +1,13 @@
 ---
+/**
+ * Componente Astro per la visualizzazione di un report.
+ * Aspetto curioso è la scelta limitata delle lingue supportate per i report,
+ * che sono solo italiano e inglese. Questo è dovuto al fatto che i report, al
+ * momento, sono disponibili solo in queste due lingue.
+ * Se in futuro dovessero essere aggiunte altre lingue, sarà necessario aggiornare il
+ * codice. Questo approccio assicura che gli sviluppatori siano consapevoli delle lingue
+ * supportate, riducendo al contempo le probabilità di un errore di digitazione da parte loro.
+ */
 interface Props {
   coverUrl: ImageMetadata;
   pdfUrl: string;
@@ -18,7 +27,13 @@ switch (pdfLanguage) {
     languageLabel = "Inglese";
     break;
   default:
-    console.warn("Lingua del documento non mappata:", pdfLanguage);
+    /** Sebbene al momento non sia mai possibile giungere a questo `default`,
+     * è stato inserito per sicurezza, in modo da avvisare gli sviluppatori qualora
+     * in futuro aggiungano una nuova lingua supportata senza aggiornare questo
+     * pezzetto di codice che si occupa di mappare le lingue supportate in una label leggibile.
+     */
+    languageLabel = "NON MAPPATA"; // Visibile agli utenti finali
+    console.warn("Lingua del documento non mappata:", pdfLanguage); // Gli sviluppatori vedranno questo messaggio nella console del browser
 }
 ---
 
@@ -49,7 +64,7 @@ switch (pdfLanguage) {
       </p>
       <p>
         <strong>Lingua del documento:</strong>
-        {languageLabel ?? "NON MAPPATA"}
+        {languageLabel}
       </p>
     </div>
 
@@ -60,6 +75,8 @@ switch (pdfLanguage) {
 
     <div class="actions">
       <a href={pdfUrl} class="button">📃 Consulta online</a>
+       <!-- L'attributo `download` è stato introdotto con HTML5 e indica al browser
+        di non renderizzare il contenuto del link, ma di scaricarlo direttamente -->
       <a href={pdfUrl} class="button" download>
         ⬇️ Scarica in PDF <small>[{pdfSize} MB]</small>
       </a>
@@ -83,6 +100,8 @@ switch (pdfLanguage) {
       border-radius: 0.5rem 0 0 0.5rem;
       width: 100%;
       max-width: 300px;
+
+      // Impostazioni per l'immagine di copertura, che si adatta al layout
       height: auto;
       object-fit: cover;
       object-position: center;

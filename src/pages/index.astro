@@ -1,10 +1,19 @@
 ---
+// Qui si importano i componenti necessari di Astro
 import Breadcrumb from "@components/Breadcrumb.astro";
 import Layout from "@layouts/Layout.astro";
 
+/**
+ * Ogni pagina deve avere un titolo, in quanto il componente Layout lo richiede.
+ * Siccome lo stesso titolo viene usato per il breadcrumb, è consigliabile
+ * mantenere il titolo della pagina in una variabile.
+ * In questo modo, se si desidera cambiare il titolo della pagina, è sufficiente
+ * modificare il valore della variabile.
+ */
 const title = "Pagina iniziale";
 ---
 
+<!-- Layout richiede anche una description, che va a finire nel rispettivo tag <meta> -->
 <Layout
   title={title}
   description="Sito web dedicato alla Sostenibilità e alla RSI della Leonardo SpA"

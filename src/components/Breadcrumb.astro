@@ -1,4 +1,9 @@
 ---
+/**
+ * Componente Astro per la visualizzazione di un breadcrumb (briciole di pane).
+ * Il breadcrumb è una lista di link che rappresenta il percorso di navigazione
+ * all'interno del sito, utile per orientare l'utente e migliorare l'usabilità.
+ */
 interface Props {
   /** Percorso per arrivare alla risorsa */
   path: {
@@ -26,10 +31,13 @@ const { path } = Astro.props;
     display: flex;
     gap: 0.5rem;
     list-style: none;
+    flex-wrap: wrap;
 
     li {
       font-size: 0.8rem;
 
+      /** Aggiunge il simbolo › in modo dinamico per ogni elemento della lista,
+      a patto che non sia l'ultimo */
       &:not(:last-child)::after {
         content: "›";
         margin-left: 0.5rem;

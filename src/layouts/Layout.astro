@@ -2,6 +2,14 @@
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 
+/**
+ * Definizione delle proprietà del layout.
+ * Queste proprietà saranno passate al componente Layout quando viene utilizzato
+ * in altre pagine del sito.
+ * Questo approccio consente di avere un layout coerente in tutto il sito,
+ * con un titolo e una descrizione specifici per ogni pagina, migliorando così
+ * l'esperienza utente e l'ottimizzazione per i motori di ricerca.
+ */
 interface Props {
   /** Titolo inserito nel `<title>` dell'`<head>` */
   title: string;
@@ -12,6 +20,7 @@ interface Props {
 
 const { title, description } = Astro.props;
 
+// Importazione del file CSS globale per applicare stili a tutto il sito
 import "../global.scss";
 ---
 
@@ -22,11 +31,14 @@ import "../global.scss";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="description" content={description} />
-    <title>{title} - Leonardo Sustainability</title>
+    <title>
+      {title} - Leonardo Sustainability
+    </title><!-- Qui viene usato il titolo passato nelle props del componente, mettendo in coda però sempre il nome del sito -->
   </head>
   <body>
     <Header />
     <slot />
+    <!-- <slot /> E' un tag speciale di Astro. Qui viene inserito il contenuto della pagina specifica -->
     <Footer />
   </body>
 </html>
